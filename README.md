@@ -1,7 +1,8 @@
-# stopwatch
-
-A stopwatch is a manual chronometer designed to measure the amount of time that has elapsed from a certain moment when it is activated to the moment when the part is deactivated. A large digital version of a stopwatch designed for viewing at a distance, as in a sports stadium, is called a stopwatch. In manual mode, the clock is started and stopped by the person pressing the button.
+# alena_translator_bot
 
 ***
 
-Секундомер — это ручной хронометр, предназначенный для измерения количества времени, прошедшего с определенного момента, когда он активируется, до момента, когда деталь деактивируется. Большая цифровая версия секундомера, предназначенная для просмотра на расстоянии, как на спортивном стадионе, называется секундомером. В ручном режиме часы запускаются и останавливаются человеком, нажимающим кнопку.
+Бот переводчик Алёна версии 1.70.<br>
+Я могу переводить  текстовые и голосовые сообщения.<br>
+Все что вам нужно это просто отправить мне сообщение и я его переведу. Если вы мне отправите, например голосовое сообщение, я в первую очередь просто вам его напишу, для того чтобы определить правильно ли я вас понимаю и только потом переведу.<br>
+К большому сожалению, читать мысли я еще не умею, поэтому мне нужно указать с какого на какой язык вы хотите перевести сообщение. Сделать это можно с помощью команды \lang.<br>
