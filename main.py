@@ -1,8 +1,9 @@
 import requests
 import modules.analytic.analytic as analytic
-from data.text import BotText
+from data.private_analytics_data import AnalyticData
+from data.bot_text import BotText
 from data.languages import Languages
-from data.private_data import BotData, AnalyticData
+from data.private_bot_data import BotData
 from utils import function, translation, conversion, config_keyboard
 from utils.actions_chanel import ActionsChanel
 from utils.bot_manager import BotManager

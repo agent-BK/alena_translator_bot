@@ -1,9 +1,12 @@
+import platform
+
+
 class FfmpegConfig:
 
     @staticmethod
     def get_path():
         try:
-            ffmpeg = r'bin/ffmpeg.exe'
+            ffmpeg = r'bin/ffmpeg.exe' if platform.system() == "Windows" else 'ffmpeg'
         except FileNotFoundError:
             ffmpeg = 'ffmpeg'
         return ffmpeg

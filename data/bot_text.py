@@ -1,5 +1,4 @@
 from data.bot_data import BotData
-from data.private_data import ChanelData
 from utils import function
 
 
@@ -13,12 +12,3 @@ class BotText:
     languages_selected = 'Отлично. Выбраны языки {0}\u21E8{1}\nДля последущей смены языков просто введите команду ' \
         '/lang и следуйте инструкциям.\nДавайте начнем переводить, я Вас внимательно слушаю.'
     not_understand = 'Я не понимаю Вас. Попробуйте повторить еще раз.'
-
-
-class ChannelText:
-    title_url_href = 'подписаться на канал Алена бот переводчик'
-    text_welcome = 'Здраствуйте {0}!\nПереводчик заработает сразу после ' + u'\U0001F449' \
-        f'<a href="{ChanelData.url}" title="{title_url_href}">подписки</a> на наш канал {ChanelData.id} '\
-        + u'\U0001F44D\n\nКанал не будет вас беспокоить, он нужен чтобы переводчик находили новые ' \
-        u'пользователи.\n\n\U0001F514' + f'<a href="{ChanelData.url}" title="{title_url_href}">Подпишитесь</a> и ' \
-        f'вы можете отправлять мне сообщения для перевода'

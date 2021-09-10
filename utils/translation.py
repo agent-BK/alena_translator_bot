@@ -15,11 +15,7 @@ def translate_name(user_name):
 
 def translate(text, lang=None, transcription=False, message=None):
     """ перевод текста """
-    if not lang and message:
-        lang_in, lang_to = base_lang(message, read=True)
-    else:
-        lang_in, lang_to = lang
-
+    lang_in, lang_to = base_lang(message, read=True) if not lang and message else lang
     return google_translator().translate(text, lang_src=lang_in, lang_tgt=lang_to, pronounce=transcription)
 
 

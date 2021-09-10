@@ -1,5 +1,5 @@
 import telebot
-from data.private_data import BotData
+from data.private_bot_data import BotData
 
 
 class BotManager:

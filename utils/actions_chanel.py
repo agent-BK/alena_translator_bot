@@ -1,8 +1,8 @@
+from data.chanel_text import ChannelText
 from utils.bot_manager import BotManager
 import telebot
-from data.private_data import ChanelData
+from data.private_chanel_data import ChanelData
 from utils import translation
-from data.text import ChannelText
 
 
 class ActionsChanel:
