@@ -9,7 +9,7 @@ from utils import translation
 from utils.ffmpeg_config import FfmpegConfig
 
 
-def audio_text(file, lang_in):
+def audio_to_text(file, lang_in):
     """конвертирование аудио в текст"""
     try:
         res = sr.Recognizer()
@@ -44,7 +44,7 @@ def convert(in_filename=None, in_bytes=None, ogg=False):
         return temp_out_file.read()
 
 
-def text_in_audio(message, text):
+def text_to_audio(message, text):
     """ конвертирование текста в аудио """
     lang_out = translation.base_lang(message, read=True)[1]
     if lang_out not in Languages.dict_not_text_audio:

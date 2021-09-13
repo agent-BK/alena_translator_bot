@@ -104,7 +104,7 @@ def text_processing(message):
             bot.send_message(message_id, text=text_translate[0])
 
             translation.pronounce(text_translate, message_id)
-            voice = conversion.text_in_audio(message, text_translate[0])
+            voice = conversion.text_to_audio(message, text_translate[0])
 
             if voice:
                 bot.send_voice(message.from_user.id, voice)
@@ -123,7 +123,7 @@ def voice_processing(message):
         file_info = bot.get_file(message.voice.file_id)
         file = requests.get(f'https://api.telegram.org/file/bot{BotData.token}/{file_info.file_path}')
         audio_bytes = conversion.convert(in_bytes=file.content, ogg=True)
-        text = conversion.audio_text(audio_bytes, translation.base_lang(message, read=True)[0])
+        text = conversion.audio_to_text(audio_bytes, translation.base_lang(message, read=True)[0])
 
         if text:
             text_translate = translation.translate(text, transcription=True, message=message)
@@ -131,7 +131,7 @@ def voice_processing(message):
             bot.send_message(message_id, text=text_translate[0])
             analytic.statistics(message_id, 'голос')
             translation.pronounce(text_translate, message_id)
-            voice = conversion.text_in_audio(message, text_translate[0])
+            voice = conversion.text_to_audio(message, text_translate[0])
             if voice:
                 bot.send_voice(message.from_user.id, voice)
         else:
