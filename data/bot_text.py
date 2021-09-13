@@ -1,10 +1,10 @@
 from data.bot_data import BotData
-from utils import function
+from utils import functions
 
 
 class BotText:
     welcome = f'Здраствуйте {0}!\nЯ Бот переводчик Алёна версии {BotData.version}.\n\nЯ могу переводить  ' \
-        f'текстовые и голосовые сообщения.\n' + function.get_help_text()
+        f'текстовые и голосовые сообщения.\n' + functions.get_help_text()
     language_input = 'Укажите язык c которого вы хотите получать переводы.\n'
     language_select = 'Выбран язык {0}\nУкажите язык на который вы хотите получать перевод.\n'
     language_not_changed = f'Языки перевода остались прежние\n{0}\u21E8{1}\nЯ Вас внимательно слушаю.'

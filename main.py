@@ -4,7 +4,7 @@ from data.private_analytics_data import AnalyticData
 from data.bot_text import BotText
 from data.languages import Languages
 from data.private_bot_data import BotData
-from utils import function, translation, conversion, config_keyboard
+from utils import functions, translation, conversion, config_keyboard
 from utils.actions_chanel import ActionsChanel
 from utils.bot_manager import BotManager
 
@@ -26,7 +26,7 @@ def start_start(message):
 def start_help(message):
     message_id = message.from_user.id
     if ActionsChanel().checking_group_member(message_id):
-        bot.send_message(message_id, text=function.get_help_text())
+        bot.send_message(message_id, text=functions.get_help_text())
         analytic.statistics(message_id, message.text)
     else:
         ActionsChanel().channel_subscription_offers(message)
@@ -49,7 +49,7 @@ def change_language_input(message):
     message_id = message.from_user.id
 
     if text in Languages.dict_languages_translation.values():
-        temp_language = function.get_key(Languages.dict_languages_translation, text)
+        temp_language = functions.get_key_dictionary(Languages.dict_languages_translation, text)
         text_out = BotText.language_select.format(Languages.dict_languages_translation[temp_language])
         bot.send_message(message_id, text=text_out)
         bot.register_next_step_handler(message, change_language_out, temp_language)
@@ -71,7 +71,7 @@ def change_language_out(message, lang_in_temp):
 
     if text in Languages.dict_languages_translation.values():
         lang_in = lang_in_temp
-        language_out = function.get_key(Languages.dict_languages_translation, text)
+        language_out = functions.get_key_dictionary(Languages.dict_languages_translation, text)
 
         translation.base_lang(message, lic=lang_in, loc=language_out)
         text_out = BotText.languages_selected.format(
