@@ -9,36 +9,36 @@ from utils import translation
 from utils.ffmpeg_config import FfmpegConfig
 
 
-def audio_to_text(file, lang_in):
+def audio_to_text(file, input_language):
     """конвертирование аудио в текст"""
     try:
         res = sr.Recognizer()
         with sr.AudioFile(io.BytesIO(file)) as source:
             audio = res.record(source)
-        return res.recognize_google(audio, language=lang_in)
+        return res.recognize_google(audio, language=input_language)
 
     except Exception as error:
         print(error)
         return
 
 
-def convert(in_filename=None, in_bytes=None, ogg=False):
+def convert(input_filename=None, input_bytes=None, ogg=False):
     """ конвертер аудио ogg -> wav и mp3 -> ogg """
     with tempfile.NamedTemporaryFile() as temp_out_file:
         temp_in_file = None
-        if in_bytes:
+        if input_bytes:
             temp_in_file = tempfile.NamedTemporaryFile(delete=False)
-            temp_in_file.write(in_bytes)
-            in_filename = temp_in_file.name
+            temp_in_file.write(input_bytes)
+            input_filename = temp_in_file.name
             temp_in_file.close()
 
-        if not in_filename:
+        if not input_filename:
             raise Exception('Не указаны входные данные')
 
-        sp.Popen(FfmpegConfig().setup_command(in_filename, ogg), stdout=temp_out_file, stderr=sp.DEVNULL).wait()
+        sp.Popen(FfmpegConfig().setup_command(input_filename, ogg), stdout=temp_out_file, stderr=sp.DEVNULL).wait()
 
         if temp_in_file:
-            os.remove(in_filename)
+            os.remove(input_filename)
         temp_out_file.seek(0)
 
         return temp_out_file.read()
@@ -50,6 +50,6 @@ def text_to_audio(message, text):
     if lang_out not in Languages.dict_not_text_audio:
         mp3_fp = io.BytesIO()
         gTTS(text=text, lang=lang_out.split(sep='-')[0], slow=False).write_to_fp(mp3_fp)
-        return convert(in_bytes=mp3_fp.getvalue(), ogg=False)
+        return convert(input_bytes=mp3_fp.getvalue(), ogg=False)
     else:
         return False
